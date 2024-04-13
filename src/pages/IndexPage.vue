@@ -71,10 +71,12 @@ const options = [
 ];
 
 const searchTodos = () => {
+  group.value = "all";
   store.searchTodos(search.value);
 };
 
 const filteredTodos = (val: "completed" | "active" | "all") => {
+  search.value = "";
   store.filteredsTodos(val);
 };
 </script>
