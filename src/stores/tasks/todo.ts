@@ -23,16 +23,13 @@ export const useTodoStore = defineStore("todoStore", {
     },
 
     toggleCompleted(id: string) {
-      this.todos = this.todos.map((todo) => {
-        if (todo.id === id) {
-          return {
-            ...todo,
-            completed: !todo.completed,
-          };
-        }
-        return todo;
-      });
-      this.todosCopy = this.todos;
+      const findIndex = this.todos.findIndex((todo) => todo.id === id);
+      if (findIndex > -1) {
+        this.todos[findIndex] = {
+          ...this.todos[findIndex],
+          completed: !this.todos[findIndex].completed,
+        };
+      }
     },
 
     updateTodo(id: string, title: string) {
