@@ -60,7 +60,6 @@ export const useTodoStore = defineStore("todoStore", {
     },
 
     filteredsTodos(filter: "all" | "completed" | "active") {
-      console.log(filter);
       if (filter === "all") {
         this.todos = this.todosCopy;
         return;

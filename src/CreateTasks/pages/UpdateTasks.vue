@@ -2,9 +2,7 @@
   <q-page class="row justify-center">
     <q-card class="q-ma-md" style="max-width: 500px; width: 100%">
       <q-card-section class="q-pa-md">
-        <q-card-title class="text-h6 text-center block q-mb-md"
-          >Actualiza tu tarea</q-card-title
-        >
+        <p class="text-h6 text-center block q-mb-md">Actualiza tu tarea</p>
         <FormTasks
           v-if="todo"
           :todo="todo"

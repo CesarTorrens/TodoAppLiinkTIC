@@ -2,14 +2,15 @@
   <q-page class="row justify-center">
     <q-card class="q-ma-md" style="max-width: 500px; width: 100%">
       <q-card-section class="q-pa-md">
-        <q-card-title class="text-h6 text-center block"
-          >Welcome to the Todo App</q-card-title
-        >
+        <p class="text-h6 q-ma-none text-center block">
+          ¡Bienvenido a tu TodoApp!
+        </p>
       </q-card-section>
       <q-card-actions class="q-mb-md no-wrap justify-between">
         <q-input
           style="width: 75%"
           dense
+          :disable="!store.getTodosCopy.length"
           v-model="search"
           outlined
           @update:model-value="searchTodos"
@@ -25,7 +26,7 @@
           label="Crear tarea"
         />
       </q-card-actions>
-      <div class="q-pa-lg">
+      <div v-show="store.getTodosCopy.length" class="q-pa-lg">
         <q-option-group
           dense
           @update:model-value="(val) => filteredTodos(val)"
@@ -35,7 +36,12 @@
           color="primary"
         />
       </div>
-      <Todo v-for="todo in store.getTodos" :key="todo.id" :todo="todo" />
+      <div v-if="store.getTodos.length > 0">
+        <Todo v-for="todo in store.getTodos" :key="todo.id" :todo="todo" />
+      </div>
+      <q-card-section v-show="!store.getTodos.length" class="text-center">
+        <p class="text-h6 q-ma-none">No tienes tareas!!</p>
+      </q-card-section>
     </q-card>
   </q-page>
 </template>
@@ -69,7 +75,6 @@ const searchTodos = () => {
 };
 
 const filteredTodos = (val: "completed" | "active" | "all") => {
-  console.log("val", val);
   store.filteredsTodos(val);
 };
 </script>

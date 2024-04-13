@@ -2,9 +2,7 @@
   <q-page class="row justify-center">
     <q-card class="q-ma-md" style="max-width: 500px; width: 100%">
       <q-card-section class="q-pa-md">
-        <q-card-title class="text-h6 text-center block q-mb-md"
-          >Crea una nueva tarea</q-card-title
-        >
+        <p class="text-h6 text-center block q-mb-md">Crea una nueva tarea</p>
         <FormTasks @submit="createTask" :loading="loading" />
       </q-card-section>
       <q-card-actions class="q-mb-md justify-between"> </q-card-actions>
